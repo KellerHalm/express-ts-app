@@ -15,17 +15,23 @@ Todo list REST API на Express 5 и TypeScript. SQLite через Prisma, JWT-�
 ```bash
 npm install
 npm run migrate   # создаст prisma/dev.db и применит миграции
-npm run seed      # необязательно: демо-пользователь
 npm run dev
 ```
 
 Сервер: http://localhost:3000, префикс API — `/api`.
 
-Демо-пользователь после `npm run seed`: `demo@example.com` / `password1`.
+Пользователи создаются только через `/api/auth/register`.
 
 ## Переменные окружения
 
-В `.env` (создаётся вручную, в gitignore):
+В `.env` (создаётся вручную, в gitignore). Готовый пример:
+
+```bash
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="dev-secret"
+PORT=3000
+CORS_ORIGIN=*
+```
 
 | Переменная    | По умолчанию | Назначение              |
 | ------------- | ------------ | ----------------------- |
@@ -44,7 +50,6 @@ npm run dev
 | `npm start`         | сервер без watch                      |
 | `npm run typecheck` | проверка типов                        |
 | `npm run migrate`   | миграции Prisma                       |
-| `npm run seed`      | демо-данные                           |
 | `npm run generate`  | генерация клиента Prisma              |
 | `npm run studio`    | GUI для просмотра данных              |
 
@@ -104,7 +109,6 @@ prisma/
   schema.prisma        модели User и Todo
   migrations/          миграции
   dev.db               база SQLite (создаётся миграцией)
-  seed.ts              демо-данные
 src/
   app.ts               сборка приложения: cors, json, роутеры, обработка ошибок
   index.ts             запуск сервера

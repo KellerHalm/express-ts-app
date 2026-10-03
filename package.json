@@ -8,14 +8,9 @@
     "start": "tsx --env-file=.env src/index.ts",
     "typecheck": "tsc --noEmit",
     "migrate": "prisma migrate dev",
-    "seed": "prisma db seed",
     "generate": "prisma generate",
     "studio": "prisma studio"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
-  
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "bcryptjs": "^3.0.2",
